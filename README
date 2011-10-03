@@ -1,0 +1,17 @@
+This is the Javascript source for the HTML5/Javascript game "OMGALIENS", which uses the Impact framework (http://impactjs.com).
+
+What's included:
+ - The Javascript source for the game
+
+What's not included:
+ - The Impact game engine. It's a $99 license to own/use which is why it's not included.
+ - The image assets for the game.
+
+What you can do:
+ - Read the code, learn from it, use snippets of it in your own code.
+
+What you can't do:
+ - Pass off the game as your own.  This is why the image assets are not included.
+
+Notes:
+ - I haven't documented the code much nor have I gone through and cleaned it up.  
