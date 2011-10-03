@@ -4,7 +4,7 @@ ig.module(
 .requires(
 	'impact.game',
 	'impact.font',
-    'impact.sound',
+	'impact.sound',
 	'impact.background-map',
 	
 	'game.entities.player-ship',
@@ -13,16 +13,16 @@ ig.module(
 	'game.entities.medium-bouncy-enemy',
 	'game.entities.crappy-bouncy-enemy',
 	'game.entities.weak-tracker-enemy',
-    'game.entities.bomber-enemy',
-    'game.entities.boss-green-enemy',
+	'game.entities.bomber-enemy',
+	'game.entities.boss-green-enemy',
 	
 	'game.entities.enemy-laser-beam',
 	'game.entities.enemy-bullet-weak',
 	
 	'game.entities.explosion',
 
-    'game.entities.shield-powerup',
-    'game.entities.gun-powerup',
+	'game.entities.shield-powerup',
+	'game.entities.gun-powerup',
 	
 	'game.levels.main'
 )
@@ -85,7 +85,7 @@ MyGame = ig.Game.extend({
 	
 	gameOver: false,
 
-    isMuted: false,
+	isMuted: false,
 	
 	totalEnemiesKilled: 0,
 	
@@ -111,9 +111,9 @@ MyGame = ig.Game.extend({
 		ig.input.bind( ig.KEY.MOUSE1, 'fire' );
 		ig.input.bind( ig.KEY.ENTER, 'ok' );
 
-        ig.input.bind( ig.KEY.P, 'pause' );
+		ig.input.bind( ig.KEY.P, 'pause' );
 	
-        ig.input.bind( ig.KEY.M, 'mute' );
+		ig.input.bind( ig.KEY.M, 'mute' );
 	
 		// load background
 		// Create BackgroundMap
@@ -140,24 +140,24 @@ MyGame = ig.Game.extend({
 		// used by background
 		//this.backgroundMovementTimer = new ig.Timer(0);
 
-        // Music
-        //ig.music.add( 'media/audio/DST-RockitFlarex.ogg' );
-        /*
-        ig.music.add( 'media/audio/DST-RobotLaserCarnage.ogg' );
-        ig.music.volume = 1.0;
-        ig.music.loop = true;
-        ig.music.play();
-        */
+		// Music
+		//ig.music.add( 'media/audio/DST-RockitFlarex.ogg' );
+		/*
+		ig.music.add( 'media/audio/DST-RobotLaserCarnage.ogg' );
+		ig.music.volume = 1.0;
+		ig.music.loop = true;
+		ig.music.play();
+		*/
 
-        soundManager.createSound({
-            id: 'backgroundMusic',
-            url: '/arcade/omgaliens/media/audio/DST-RobotLaserCarnage.mp3',
-            autoPlay: true,
-            volume: 60
-        }).play({
-            onfinish: function() { soundManager.play('backgroundMusic') }
-        });
-        
+		soundManager.createSound({
+			id: 'backgroundMusic',
+			url: '/arcade/omgaliens/media/audio/DST-RobotLaserCarnage.mp3',
+			autoPlay: true,
+			volume: 60
+		}).play({
+			onfinish: function() { soundManager.play('backgroundMusic') }
+		});
+		
 
 	},
 	
@@ -175,19 +175,19 @@ MyGame = ig.Game.extend({
 			this.levelActionTimer.reset();
 		}
 		
-        // Welcome Screen
-        if( Level.number == 0 && ig.input.pressed( 'ok' ) ) {
-            this.nextLevel();
-        }
+		// Welcome Screen
+		if( Level.number == 0 && ig.input.pressed( 'ok' ) ) {
+			this.nextLevel();
+		}
 
-        // mute game?
-        if( ig.input.pressed( 'mute' ) ) {
-            if( this.isMuted )
-                soundManager.unmute();
-            else
-                soundManager.mute();
-            this.isMuted = !this.isMuted;
-        }
+		// mute game?
+		if( ig.input.pressed( 'mute' ) ) {
+			if( this.isMuted )
+				soundManager.unmute();
+			else
+				soundManager.mute();
+			this.isMuted = !this.isMuted;
+		}
 
 		// respawn player if dead
 		if( this.waitingToRespawn && this.playerSpawnTimer.delta() > 0) {
@@ -219,7 +219,7 @@ MyGame = ig.Game.extend({
 		if (this.gameOver && this.canContinue && ig.input.pressed('ok') ) {
 			this.continueGame();	
 		}
-        
+		
 
 	},
 	
@@ -253,18 +253,18 @@ MyGame = ig.Game.extend({
 			ig.system.context.fillRect( x*s+s, y*s+s, w*s*(player_health/100)-s-s, h*s-s-s );
 		}
 
-        // Before the game starts
-        if (Level.number == 0) {
-            this.font.draw( 'OMGALIENS', 120, 52, ig.Font.ALIGN.CENTER );
+		// Before the game starts
+		if (Level.number == 0) {
+			this.font.draw( 'OMGALIENS', 120, 52, ig.Font.ALIGN.CENTER );
 
-            this.font.draw( 'CONTROLS', 120, 75, ig.Font.ALIGN.CENTER );
-            this.font.draw( 'AWDS / ARROW KEYS - MOVE', 50, 83, ig.Font.ALIGN.LEFT );
-            this.font.draw( 'F / SHIFT / SPACE - SHOOT', 50, 91, ig.Font.ALIGN.LEFT );
-            //this.font.draw( 'M - MUTE', 50, 99, ig.Font.ALIGN.LEFT );
+			this.font.draw( 'CONTROLS', 120, 75, ig.Font.ALIGN.CENTER );
+			this.font.draw( 'AWDS / ARROW KEYS - MOVE', 50, 83, ig.Font.ALIGN.LEFT );
+			this.font.draw( 'F / SHIFT / SPACE - SHOOT', 50, 91, ig.Font.ALIGN.LEFT );
+			//this.font.draw( 'M - MUTE', 50, 99, ig.Font.ALIGN.LEFT );
 
 			this.font.draw( 'Press Enter', 120, 268, ig.Font.ALIGN.CENTER );
 			this.font.draw( 'to Begin!', 120, 276, ig.Font.ALIGN.CENTER );
-        }
+		}
 
 		// game over!
 		if ( this.gameOver && this.canContinue) {
@@ -274,11 +274,11 @@ MyGame = ig.Game.extend({
 		}
 		
 		if (this.gameOver && !this.canContinue) {
-            this.font.draw( 'Game Over!', 120, 152, ig.Font.ALIGN.CENTER ); 
+			this.font.draw( 'Game Over!', 120, 152, ig.Font.ALIGN.CENTER ); 
 			this.font.draw( 'Post your high score', 120, 168, ig.Font.ALIGN.CENTER );
 			this.font.draw( 'to Facebook to continue!', 120, 186, ig.Font.ALIGN.CENTER );
 			this.font.draw( 'Press Enter to Post', 120, 204, ig.Font.ALIGN.CENTER );
-            this.font.draw( '(Disable your popup blocker first)', 120, 220, ig.Font.ALIGN.CENTER );
+			this.font.draw( '(Disable your popup blocker first)', 120, 220, ig.Font.ALIGN.CENTER );
 
 		}
 	},
@@ -315,8 +315,8 @@ MyGame = ig.Game.extend({
 	},
 	
 	spawnPowerup: function( powerupType ) {
-        ig.game.spawnEntity( powerupType, Math.random() * 240, -8);
-    },
+		ig.game.spawnEntity( powerupType, Math.random() * 240, -8);
+	},
 	
 	// called by any enemy that dies
 	enemyKilled: function( enemy ) {
@@ -329,18 +329,18 @@ MyGame = ig.Game.extend({
 		var level = Level.number;
 		var enemiesOnScreen = this.getEntitiesByType( EntityEnemy ).length;
 
-        // Shield Powerup
-        if( Math.random() < 1.0/60.0 ) { // 1 per minute
-            this.spawnPowerup( EntityShieldPowerup );
-        }
-        
-        var levelPointer = 1;
+		// Shield Powerup
+		if( Math.random() < 1.0/60.0 ) { // 1 per minute
+			this.spawnPowerup( EntityShieldPowerup );
+		}
+		
+		var levelPointer = 1;
 
 		/* LEVEL ONE */
 		if (level == levelPointer++) {
 			// Spawn Logic
 			if (enemiesOnScreen < 3 &&
-			    Math.random() > 0.4) { // average every other time
+				Math.random() > 0.4) { // average every other time
 				this.spawnEnemyRandomOffscreen( EntityCrappyBouncyEnemy );
 			}	
 			// Next Level Logic
@@ -351,7 +351,7 @@ MyGame = ig.Game.extend({
 		if (level == levelPointer++) {
 			// Spawn Logic
 			if (enemiesOnScreen < 10 &&
-			    Math.random() > 0.25) {
+				Math.random() > 0.25) {
 				this.spawnEnemyRandomOffscreen( EntityCrappyBouncyEnemy );
 			}
 			// Next Level Logic
@@ -372,7 +372,7 @@ MyGame = ig.Game.extend({
 		if (level == levelPointer++) {
 			// Spawn Logic
 			if ( (Level.enemiesKilledThisLevel + enemiesOnScreen < 50) 
-                && enemiesOnScreen < 15) {
+				&& enemiesOnScreen < 15) {
 				if( Math.random() < 0.2 ) {
 					this.spawnEnemyRandomOffscreen( EntityMediumBouncyEnemy );
 				} else {
@@ -384,7 +384,7 @@ MyGame = ig.Game.extend({
 				this.nextLevel();
 		}
 
-        if (level == levelPointer++) {
+		if (level == levelPointer++) {
 			// Spawn Logic
 			if (enemiesOnScreen == 0 && Level.enemiesKilledThisLevel == 0) {
 				this.spawnEnemyRandomOffscreen( EntityBossGreenEnemy );
@@ -402,18 +402,18 @@ MyGame = ig.Game.extend({
 				   Math.random() < 0.1)
 					ig.game.spawnEntity( EntityWeakTrackerEnemy, -16, 16 );
 				else {
-                    if( Math.random() < 0.2 ) {
-                        this.spawnEnemyRandomOffscreen( EntityMediumBouncyEnemy );
-                    } else {
-                        this.spawnEnemyRandomOffscreen( EntityCrappyBouncyEnemy );
-                    }
+					if( Math.random() < 0.2 ) {
+						this.spawnEnemyRandomOffscreen( EntityMediumBouncyEnemy );
+					} else {
+						this.spawnEnemyRandomOffscreen( EntityCrappyBouncyEnemy );
+					}
 				}
 			}
 			// Next Level Logic
 			if (Level.enemiesKilledThisLevel >= 50)
 				this.nextLevel();
 		}
-        if (level == levelPointer++) {
+		if (level == levelPointer++) {
 			// Spawn Logic
 			if (enemiesOnScreen < 25) {
 				// Always have a tracker guy at the top
@@ -421,18 +421,18 @@ MyGame = ig.Game.extend({
 				   Math.random() < 0.1)
 					ig.game.spawnEntity( EntityWeakTrackerEnemy, -16, 16 );
 				else {
-                    if( Math.random() < 0.7 ) {
-                        this.spawnEnemyRandomOffscreen( EntityMediumBouncyEnemy );
-                    } else {
-                        this.spawnEnemyRandomOffscreen( EntityCrappyBouncyEnemy );
-                    }
+					if( Math.random() < 0.7 ) {
+						this.spawnEnemyRandomOffscreen( EntityMediumBouncyEnemy );
+					} else {
+						this.spawnEnemyRandomOffscreen( EntityCrappyBouncyEnemy );
+					}
 				}
 			}
 			// Next Level Logic
 			if (Level.enemiesKilledThisLevel >= 50)
 				this.nextLevel();
-        }
-        if (level == levelPointer++) {
+		}
+		if (level == levelPointer++) {
 			// Spawn Logic
 			if (enemiesOnScreen < 25) {
 				// Always have a tracker guy at the top
@@ -440,54 +440,54 @@ MyGame = ig.Game.extend({
 				   Math.random() < 0.1)
 					ig.game.spawnEntity( EntityWeakTrackerEnemy, -16, 16 );
 				else {
-                    if( Math.random() < 0.0 ) {
-                        this.spawnEnemyRandomOffscreen( EntityMediumBouncyEnemy );
-                    } else {
-                        this.spawnEnemyRandomOffscreen( EntityBomberEnemy );
-                    }
+					if( Math.random() < 0.0 ) {
+						this.spawnEnemyRandomOffscreen( EntityMediumBouncyEnemy );
+					} else {
+						this.spawnEnemyRandomOffscreen( EntityBomberEnemy );
+					}
 				}
 			}
 			// Next Level Logic
 			if (Level.enemiesKilledThisLevel >= 50)
 				this.nextLevel();
-        }
-        if (level >= levelPointer++) {
+		}
+		if (level >= levelPointer++) {
 			// Spawn Logic
 
-            var enemiesToSpawn = level - enemiesOnScreen;
+			var enemiesToSpawn = level - enemiesOnScreen;
 
-            for( var i = 0; i < enemiesToSpawn; i++ ) {
+			for( var i = 0; i < enemiesToSpawn; i++ ) {
 				// Always have a tracker guy at the top
 				if( this.getEntitiesByType(EntityWeakTrackerEnemy).length < 3 &&
 				   Math.random() < 0.1) {
 					ig.game.spawnEntity( EntityWeakTrackerEnemy, -16, 16 );
-			    }
-                
-                // span a random dude
-                var enemyTypeList = [   EntityCrappyBouncyEnemy, 
-                                        //EntityWeakTrackerEnemy,
-                                        EntityBomberEnemy,
-                                        EntityMediumBouncyEnemy
-                                    ];
-                var index = Math.floor( Math.random() * enemyTypeList.length );
+				}
+				
+				// span a random dude
+				var enemyTypeList = [	EntityCrappyBouncyEnemy, 
+										//EntityWeakTrackerEnemy,
+										EntityBomberEnemy,
+										EntityMediumBouncyEnemy
+									];
+				var index = Math.floor( Math.random() * enemyTypeList.length );
 
-                var enemyTypeToSpawn = enemyTypeList[index];
-                
-                this.spawnEnemyRandomOffscreen( enemyTypeToSpawn );
+				var enemyTypeToSpawn = enemyTypeList[index];
+				
+				this.spawnEnemyRandomOffscreen( enemyTypeToSpawn );
 
-                // MAYBE spawn a weapon powerup
-                if (Math.random() < 0.01)
-                    this.spawnPowerup( EntityGunPowerup );
+				// MAYBE spawn a weapon powerup
+				if (Math.random() < 0.01)
+					this.spawnPowerup( EntityGunPowerup );
 
-                // MAYBE spawn a boss guy
-                if( this.getEntitiesByType(EntityBossGreenEnemy).length < 1 && Math.random() < 0.01)
-                    this.spawnEnemyRandomOffscreen( EntityBossGreenEnemy );
-            }
+				// MAYBE spawn a boss guy
+				if( this.getEntitiesByType(EntityBossGreenEnemy).length < 1 && Math.random() < 0.01)
+					this.spawnEnemyRandomOffscreen( EntityBossGreenEnemy );
+			}
 
 			// Next Level Logic
 			if (Level.enemiesKilledThisLevel >= 20)
 				this.nextLevel();
-        }
+		}
 
 
 	},
